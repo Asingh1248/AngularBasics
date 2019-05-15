@@ -1,0 +1,59 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<!-- It has just the html code and the variable title in curly brackets. It gets replaced with the value, which is present in the app.component.ts file. This is called binding.  -->
+
+<div style="text-align:center">
+  <span changeText></span> <!-- t6(CustomDirectives)-->
+  Welcome to {{ title }}!
+
+  <!--data binding - {{}}; this process is called interpolation.  -->
+  <app-new-cmp> </app-new-cmp>
+  <!--t2:When the <app-new-cmp></app-new-cmp> tag is added, all that is present in the .html file of the new component created will get displayed on the browser along with the parent component data.  -->
+
+  <!-- t3: -->
+  <div>Months
+    <select>
+      <!-- Try t5(EB) for DropDown-->
+      <option *ngFor="let i of months">{{i}}</option>
+    </select>
+  </div>
+  <br>
+
+  <div>
+    <!-- t6(Dir) Structural Directives -->
+    <span *ngIf="isavailable ; then condition1 else condition2">Condition True hi hai--tabhi display hoga</span>
+    <!-- ngIF Silly Mistake in Angular Syntax Shows Error -->
+    <ng-template #condition1>Condition is valid</ng-template>
+    <!--t4.1 -->
+    <ng-template #condition2>Condition is Invalid</ng-template>
+
+  </div>
+
+  <button (click)="myClickFunction($event)">
+    Click ME
+  </button>
+  <!-- t5(EB) -->
+
+  <div>
+    <!-- t7(Pipes) -->
+    <h2>Date Pipes</h2>
+    <b>{{todaydate  | date:'d/M/y'}}</b><br>
+    <b>{{todaydate | date:'shortTime'}}</b>
+  </div>
+
+  <div>
+
+    <!-- t7(CustomPipes) -->
+    <h1>Custom Pipe</h1>
+    <b>Square root of 25 is: {{25 | sqrt}}</b>
+    <br />
+    <b>Square root of 729 is: {{729 | sqrt}}</b>
+  </div>
+
+  <br />
+  <br />
+  <br />
+  <a routerLink="new-cmp">New component</a>
+  <!--  given routerLink as “new-cmp”-->
+  <router-outlet></router-outlet>
+  <!-- The above tag ensures that the content in the new-cmp.component.html will be displayed on the page when a user clicks new component. -->
